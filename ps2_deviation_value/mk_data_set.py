@@ -10,7 +10,7 @@ def create_data_set(size):
 data_set = create_data_set(data_size)
 
 # CSVファイルの保存場所を指定
-file_path = '/Users/suzukiakiramuki/practice/ps2_deviation_value/csv/sample_data.csv'
+file_path = 'ps2_deviation_value/csv/sample_data.csv'
 
 # CSVファイルの作成
 with open(file_path, mode='w', newline='') as file:
