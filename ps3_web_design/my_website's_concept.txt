@@ -1,0 +1,18 @@
+vision  :   webサイトにやってきた人に閲覧目的とは別の作品にも興味を持ってもらい。それぞれのSNSアカウントをフォロー・シェアしてもらう。
+target  :   丸ごと高専生、丸ごと高専志望者、志望者家族、ハッカー、クリエイター
+design_concept:
+->スタイリッシュなデザイン、ハッカーライク
+->寒色、ダークスタイル
+->作品を強調からのSNSアカウントへの誘導。
+
+site's_layout:
+->フルスクリーンorグリッド
+
+color       :   blue
+brightness  :   low
+saturation  :   high
+tone        :   graish
+
+main_color  :   blue
+base_color  :   black
+accent_color:   あとで決める。
