@@ -22,3 +22,5 @@ def mk_sample_number():
 for i in range(10):
     print(mk_sample_number())
 """
+
+print(mk_sample_number())
