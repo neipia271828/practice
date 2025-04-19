@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# メインブランチ名を指定
+main_branch="main"
+
+# 現在のブランチを保存
+current_branch=$(git branch --show-current)
+
+# メインブランチに切り替え
+git checkout $main_branch
+
+# 全てのローカルブランチを取得（メインブランチを除く）
+branches=$(git branch | grep -v "$main_branch" | tr -d ' *')
+
+# 各ブランチを削除
+for branch in $branches; do
+    echo "Deleting branch: $branch"
+    git branch -D $branch
+done
+
+echo "ブランチの削除が完了しました"
