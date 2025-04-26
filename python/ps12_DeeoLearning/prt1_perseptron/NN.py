@@ -23,13 +23,14 @@ NOR = NeuralNetwork(-1,-1,-0.5)
 #テスト記述
 def test(func, gate_name):
     print(f"testtarget is :{gate_name}")
+
     #入力のパターン四通りを出力する。
     for i in range(2):
         for j in range(2):
             print(f"({i},{j}):{func.NN(i,j)}")
 
 #テストコード
-if __name__=="main":
+if __name__ == "__main__":
     #テスト実行
     test(AND,"AND")
     test(OR,"OR")
@@ -55,7 +56,8 @@ if __name__=="main":
             print("hit")
             print(f"XORis({func.w1},{func.w2},{func.theta})")
             break
-    
+        if i == 9999:
+            print("No hit parameters")
     #XORの正解。OR出力とNAND出力をAND入力へ
     class XOR():
         def NN(self, x1, x2): 
