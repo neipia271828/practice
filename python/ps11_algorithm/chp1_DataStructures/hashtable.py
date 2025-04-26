@@ -16,6 +16,20 @@ class HashTable:
     def stable_hash(self, key):
         return int(hashlib.sha256(key.encode('utf-8')).hexdigest(),16)
     
+    #要素追加
+    def add_val(self, key, val):
+        try:
+            self.table[self.cal_adress(key)].append([key, val])
+            print("process complete.")
+        except:
+            print("error")
+    
+    #要素削除
+    def del_val(self, key):
+        adress = self.srch_adress(key)
+        print(adress)
+        del self.table[adress[0]][adress[1]]
+    
     #アドレス検索
     def srch_adress(self, key):
         adress = self.cal_adress(key)
@@ -34,20 +48,6 @@ class HashTable:
         adress = hash_hex % self.table_size
         return adress
     
-    #要素追加
-    def add_val(self, key, val):
-        try:
-            self.table[self.cal_adress(key)].append([key, val])
-            print("process complete.")
-        except:
-            print("error")
-    
-    #要素削除
-    def del_val(self, key):
-        adress = self.srch_adress(key)
-        print(adress)
-        del self.table[adress[0]][adress[1]]
-
     #要素検索
     def rdg_val(self, key):
         adress = self.cal_adress(key)
@@ -56,6 +56,7 @@ class HashTable:
                 return i
             else:
                 print("not found")
+    
 
 if __name__ == "__main__":
     name_list = HashTable(3)
@@ -72,13 +73,92 @@ if __name__ == "__main__":
     print(name_list.table)
 
 class TestHashTable:
-    def __init__(self, table_size, dataset,  Function=HashTable()):
-        self.function = Function
+    def __init__(self, dataset,  table_size=16, Function=HashTable):
         self.table_size  = table_size
+        self.function = Function(self.table_size)
         self.dataset = dataset
+        self.test_target = []
+        for i in range(10):
+            self.test_target.append(self.dataset[random.randint(0,49)])
+        print(f"test target is\n{self.test_target}")
     
     def mk_table(self):
         for data in self.dataset:
             self.function.add_val(data[0],data[1])
-        #今日はここまで、
-        #print("")
+        print("prosecc compleate")
+        print(self.function.table)
+    
+    def srch_test(self):
+        case = 0
+        for i in self.test_target:
+            case += 1
+            result = self.function.rdg_val(i[0])
+            if i == result:
+                print(f"case {case} clear")
+                print(f"target is {i}")
+                print(f"result is {result}")
+            else:
+                print("error")
+    
+    def do(self):
+        self.mk_table()
+        self.srch_test()
+
+
+
+dataset = [
+    ["Taro", "man"],
+    ["Jiro", "man"],
+    ["Saburo", "man"],
+    ["Shiro", "man"],
+    ["Goro", "man"],
+    ["Ichiro", "man"],
+    ["Kenta", "man"],
+    ["Hiroshi", "man"],
+    ["Takashi", "man"],
+    ["Yusuke", "man"],
+    ["Daichi", "man"],
+    ["Ren", "man"],
+    ["Satoshi", "man"],
+    ["Masato", "man"],
+    ["Yuji", "man"],
+    ["Koji", "man"],
+    ["Ryo", "man"],
+    ["Haruto", "man"],
+    ["Sho", "man"],
+    ["Renji", "man"],
+    ["Riku", "man"],
+    ["Shun", "man"],
+    ["Keisuke", "man"],
+    ["Makoto", "man"],
+    ["Daiki", "man"],
+    ["Yumi", "woman"],
+    ["Sakura", "woman"],
+    ["Miyu", "woman"],
+    ["Aiko", "woman"],
+    ["Naoko", "woman"],
+    ["Keiko", "woman"],
+    ["Emi", "woman"],
+    ["Kana", "woman"],
+    ["Reina", "woman"],
+    ["Mika", "woman"],
+    ["Haruka", "woman"],
+    ["Yui", "woman"],
+    ["Rina", "woman"],
+    ["Ayaka", "woman"],
+    ["Mio", "woman"],
+    ["Saki", "woman"],
+    ["Natsuki", "woman"],
+    ["Riko", "woman"],
+    ["Sumire", "woman"],
+    ["Mei", "woman"],
+    ["Nana", "woman"],
+    ["Akari", "woman"],
+    ["Hina", "woman"],
+    ["Miu", "woman"],
+    ["Asuka", "woman"]
+]
+
+if __name__ == "__main__":
+    test = TestHashTable(dataset)
+    test.do()
