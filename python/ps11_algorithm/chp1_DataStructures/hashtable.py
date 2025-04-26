@@ -57,7 +57,7 @@ class HashTable:
             else:
                 print("not found")
     
-
+#テストコード
 if __name__ == "__main__":
     name_list = HashTable(3)
     name_list.add_val("Hinata","man")
